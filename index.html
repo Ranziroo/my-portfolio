@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrasi Sistem Jaringan • XII TKJ D</title>
+    <title>Raditya Arjun Fayyadhin</title>
 
+    <!-- icon -->
+    <link rel="shortcut icon" href="img/logo.webp" type="image/png">
     <!-- css -->
     <link rel="stylesheet" href="css/style.css" />
 
@@ -18,25 +20,26 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/b0ce53bf51.js" crossorigin="anonymous"></script>
 
-    <!-- aos -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- gsap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 </head>
 
 <body>
 
     <header>
-        <img src="img/logo.png" alt="" class="logo" loading="lazy">
+        <img src="img/logo.webp" alt="" class="logo" loading="lazy">
 
         <nav>
-            <a class="nav-links" href="#home">Home</a>
-            <a class="nav-links" href="#about">About</a>
-            <button class="hdr-btn">Materi <i class="fa-solid fa-caret-down caret"></i>
-                <div class="hdr-btn-cont">
-                    <a href="control.html">Control Panel</a>
-                    <a href="hosting.html">Hosting</a>
-                </div>
-            </button>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experiences">Experiences</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
         </nav>
     </header>
@@ -47,129 +50,282 @@
         <!-- background canvas -->
         <canvas class="home-bg" aria-hidden="true"></canvas>
 
-        <div class="home-cont">
-            <div class="home-cont-child" data-aos="fade-right" data-aos-duration="1000">
-                <div class="asj-kecil">
-                    Administrasi Sistem Jaringan • ASJ
-                </div>
+<div class="home-cont">
+    <div class="home-cont-child">
 
-                <h1 class="home-title">
-                    Raditya Arjun <span class="accent">Fayyadhin</span>
-                </h1>
+        <h1 class="home-title">
+            Raditya Arjun <span class="accent">Fayyadhin</span>
+        </h1>
 
-                <p class="home-lead">
-                    Pelajar SMK — fokus pada jaringan & server. Website ini dibuat untuk memenuhi tugas mata pelajaran
-                    ASJ,
-                    sekaligus sebagai portofolio kecil yang menampilkan kemampuan dasar administrasi sistem jaringan.
-                </p>
+        <p class="home-lead">
+            Here you'll see my resume and find some of my most recent work. Please take a look, and if you're
+            interested in working with me, <a href="">get in touch!</a>
+        </p>
 
-                <div class="home-list-cont">
-                    <div class="home-list"><strong>Sekolah : </strong>SMK 3 Perguruan Cikini</strong></div>
-                    <div class="home-list"><strong>Jurusan : </strong>Teknik Komputer & Jaringan</div>
-                    <div class="home-list"><strong>Minat : </strong>Fullstack Web Developer, Cyber Security </div>
-                </div>
-
-                <div class="home-cta">
-                    <button id="contact" class="home-button">
-                        <span>Contact Me</span>
-                        <svg fill="none" viewBox="0 0 24 24" class="arrow">
-                            <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor"
-                                d="M5 12h14M13 6l6 6-6 6"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <div class="home-cont-child" data-aos="fade-left" data-aos-delay="300">
-                <div class="home-img-cont" aria-label="profile-image">
-                    <div class="home-img-cont-2">
-                        <img src="img/ajun.png" alt="gambar">
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        <button class="home-btn">
+            Github
+            <i class="fa-brands fa-github"></i>
+        </button>
+        
+    </div>
+</div>
     </section>
 
     <!-- section about -->
     <section id="about" class="about">
-        <h2 class="about-title" data-aos="fade-up"><span>About</span> Me</h2>
         <div class="about-cont">
+            <div class="about-title">About <span>Me</span></div>
+            <p class="about-lead">
+                Hello! I'm Arjun, a front-end programmer from Jakarta. Skilled in creating responsive websites, UI/UX,
+                security, optimization, back-end communication, and interaction. My core experience lies in <b>SCSS
+                    TailwindCSS, JavaScript, TypeScript, PHP, Python,</b> and using leading frameworks like <b>NextJS,
+                    NuxtJS, Laravel, and Angular.</b>
+                <br><br>
+                I enjoy transforming complex problems into <b>clean, structured solutions.</b> You can collaborate with
+                me
+                here, or if you'd like to see my CV, please download it.
+                <br><br>
+                <button id="cv-download" class="cv-download">Download CV</button>
+            </p>
 
-            <div class="about-cont-child" data-aos="fade-up" data-aos-delay="300">
-                <div class="about-cont-child-2">Nama Lengkap</div>
-                <p>Raditya Arjun Fayyadhin</p>
-            </div>
+        </div>
 
-            <div class="about-cont-child" data-aos="fade-up" data-aos-delay="600">
-                <div class="about-cont-child-2">Umur</div>
-                <p>18 Tahun</p>
-            </div>
-
-            <div class="about-cont-child" data-aos="fade-up" data-aos-delay="900">
-                <div class="about-cont-child-2">Status</div>
-                <p>Pelajar</p>
-            </div>
-
-            <div class="about-cont-child" data-aos="fade-up" data-aos-delay="1200">
-                <div class="about-cont-child-2">Hobi</div>
-                <p>Game & Musik</p>
-            </div>
-
-            <div class="about-cont-child" data-aos="fade-up" data-aos-delay="1500">
-                <div class="about-cont-child-2">Makanan Favorit</div>
-                <p>Mie Ayam, Nasi Goreng</p>
-            </div>
-
-            <div class="about-cont-child" data-aos="fade-up" data-aos-delay="1800">
-                <div class="about-cont-child-2">Alamat</div>
-                <p>Jalan Cipedak Raya, Srengseng Sawah, Jagakarsa, Jakarta Selatan</p>
-            </div>
-
+        <div class="about-cont">
+            <img src="img/ajun.webp" alt="Raditya Arjun Fayyadhin" laoding="lazy">
         </div>
     </section>
 
+    <!-- section skills -->
+    <section id="skills" class="skills">
+        <h2 class="skills-title">List of Skills</h2>
+        <br><br>
+        <h4>Frontend</h4>
+        <hr>
+        <div class="skills-cont">
+            <div class="skills-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
+                <p>HTML</p>
+            </div>
+
+            <div class="skills-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
+                <p>CSS</p>
+            </div>
+
+            <div class="skills-card">
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
+                <p>JavaScript</p>
+            </div>
+
+            <div class="skills-card">
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" />
+                <p>TailwindCSS</p>
+            </div>
+
+            <div class="skills-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" />
+                <p>NextJS</p>
+            </div>
+
+            <div class="skills-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+                <p>ReactJS</p>
+            </div>
+
+            <div class="skills-card">
+                <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+                <p>TypeScript</p>
+            </div>
+
+            <div class="skills-card">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg" />
+                <p>Bootstrap</p>
+                </div>
+            </div>
+            <br><br>
+            <h4>Backend</h4>
+            <hr>
+            <div class="skills-cont">
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" />
+                    <p>PHP</p>
+                </div>
+
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" />
+                    <p>ExpressJS</p>
+                </div>
+
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg" />
+                    <p>Golang</p>
+                </div>
+
+                <div class="skills-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" />
+                    <p>NodeJS</p>
+                </div>
+            </div>
+            <br><br>
+            <h4>Database</h4>
+            <hr>
+            <div class="skills-cont">
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" />
+                    <p>MySQL</p>
+                </div>
+
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" />
+                    <p>MongoDB</p>
+                </div>
+
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" />
+                    <p>PostgreSQL</p>
+                </div>
+            </div>
+            <br><br>
+            <h4>Others</h4>
+            <hr>
+            <div class="skills-cont">
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" />
+                    <p>Git</p>
+                </div>
+
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" />
+                    <p>GitHub</p>
+                </div>
+
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ubuntu/ubuntu-plain.svg" />
+                    <p>Ubuntu</p>
+                </div>
+
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" />
+                    <p>Visual Studio Code</p>
+                </div>
+
+                <div class="skills-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodemon/nodemon-original.svg" />
+                    <p>Nodemon</p>
+                </div>
+
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-plain.svg" />
+                    <p>Docker</p>
+                </div>
+
+                <div class="skills-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/atom/atom-original.svg" />
+                    <p>Atom</p>
+                </div>
+            </div>
+    </section>
+
+    <!-- section experiences -->
+<section id="experiences" class="experiences">
+    <h2 class="exp-title">Experiences</h2>
+
+    <div class="zigzag-timeline">
+
+        <!-- SD -->
+        <div class="zigzag-item left">
+            <i class="fa-solid fa-graduation-cap timeline-icon"></i>
+            <div class="zigzag-content">
+                <h3>SDN 17 PAGI</h3>
+                <span class="year">2014 – 2020</span>
+                <p>Memulai pendidikan dasar dan membangun fondasi akademik serta sosial.</p>
+            </div>
+        </div>
+
+        <!-- SMP -->
+        <div class="zigzag-item right">
+            <i class="fa-solid fa-graduation-cap timeline-icon"></i>
+            <div class="zigzag-content">
+                <h3>SMPN 211 Jakarta</h3>
+                <span class="year">2020 – 2023</span>
+                <p>Mengembangkan pemikiran kritis, kerja sama, dan keterampilan belajar.</p>
+            </div>
+        </div>
+
+        <!-- SMK -->
+        <div class="zigzag-item left">
+            <i class="fa-solid fa-graduation-cap timeline-icon"></i>
+            <div class="zigzag-content">
+                <h3>SMK 3 PERGURUAN CIKINI</h3>
+                <span class="year">2023 – 2026</span>
+                <p>Mendalami pemrograman, teknologi, serta pengalaman praktis dunia IT.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+     <!-- section Portfolio -->
+     <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-cont">
+            <div class="portfolio-card">
+                <img src="img/portfolio/turbolance.webp" alt="">
+                <button>See More</button>
+            </div>
+
+            <div class="portfolio-card">
+                <img src="img/portfolio/fashvibe.webp" alt="">
+                <button>See More</button>
+            </div>
+
+        </div>
+
+<div class="portfolio-popup hidden">
+    <button class="popup-close">✕</button>
+
+    <img class="popup-img" src="" alt="">
+    <h2 class="popup-title"></h2>
+    <p class="popup-desc"></p>
+</div>
+
+     </section>
+
+     <!-- section contact -->
+     <section id="contact" class="contact">
+        <div class="contact-cont">
+            <img src="img/assets/contact-bg.webp" alt="" class="contact-img">
+            <form action="" method="post">
+                <h2>Get In Touch</h2>
+                <p>I'm always interested in hearing about new projects, so if you'd like to chat please get in touch</p>
+                <label for="name">Your Name</label>
+                <input type="text" name="name" id="name" placeholder="Name" required>
+                <label for="email">Your Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <label for="message">Message</label>
+                <textarea name="message" id="message" cols="30" rows="10" placeholder="Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+
+        </div>
+     </section>
+
+    <!-- section footer -->
     <footer>
         <div class="footer-cont">
-            <img src="img/logo.png" loading="lazy" class="logo"></img>
-            <p class="footer-desc">Demikian website ini dibuat untuk memenuhi tugas mata pelajaran Administrasi Sistem Jaringan
-                (ASJ).</p>
-        </div>
-
-        <div class="footer-cont">
-            <h3>Peta Situs</h3>
-            <hr>
-
-            <ul class="footer-list">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <button class="footer-btn">Materi <i class="fa-solid fa-caret-down caret"></i>
-
-                    <div class="footer-btn-cont">
-                        <a href="control.html">Control Panel</a>
-                        <a href="hosting.html">Hosting</a></a>
-                    </div>
-                </button>
-            </ul>
-        </div>
-
-        <div class="footer-cont">
-            <h3>Media Sosial</h3>
-            <hr>
-
-            <ul class="footer-list-sm">
-                <li><a href="https://www.instagram.com/raditya_fayyadhin/"><i class="fa-brands fa-instagram"></i></a>
-                </li>
-                <li><a href="https://www.facebook.com/raditya.fayyadhin"><i class="fa-brands fa-youtube"></i></a></li>
-            </ul>
+            <a href=""><i class="fa-brands fa-square-instagram"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin"></i></a>
         </div>
 
         <div class="copyright">&copy; 2025 Raditya Arjun Fayyadhin</div>
     </footer>
 
-
     <!-- script -->
     <script src="js/script.js"></script>
+    <script src="js/gsap.js"></script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

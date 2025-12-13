@@ -1,38 +1,3 @@
-// animasi gambar home
-  (function(){
-    const el = document.querySelector('.home-img-cont');
-    if(!el) return;
-
-    const wrap = el.querySelector('.home-img-cont-2');
-
-    function handleMove(e){
-      const r = el.getBoundingClientRect();
-      const cx = r.left + r.width / 2;
-      const cy = r.top + r.height / 2;
-      const mouseX = (e.clientX || (e.touches && e.touches[0].clientX)) - cx;
-      const mouseY = (e.clientY || (e.touches && e.touches[0].clientY)) - cy;
-      const px = (mouseX / (r.width/2));
-      const py = (mouseY / (r.height/2));
-      const tiltX = (py * -6).toFixed(2);
-      const tiltY = (px * 8).toFixed(2);
-
-      el.style.transform = `translateY(-6px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
-      wrap.style.transform = `translateZ(28px)`;
-      wrap.querySelector('img').style.transform = `scale(1.08) translateZ(40px)`;
-    }
-
-    function reset(){
-      el.style.transform = '';
-      wrap.style.transform = '';
-      wrap.querySelector('img').style.transform = '';
-    }
-
-    el.addEventListener('mousemove', handleMove);
-    el.addEventListener('touchmove', handleMove, {passive:true});
-    el.addEventListener('mouseleave', reset);
-    el.addEventListener('touchend', reset);
-  })();
-
 (function(){
   const canvas = document.querySelector('.home-bg');
   if(!canvas) return;
@@ -43,7 +8,6 @@
   let animationId = null;
   let mouse = { x: null, y: null, active: false };
 
-  // konfigurasi mudah diubah
   const CONFIG = {
     baseColorA: getComputedStyle(document.documentElement).getPropertyValue('--ring-1').trim() || '#7c3aed',
     baseColorB: getComputedStyle(document.documentElement).getPropertyValue('--ring-2').trim() || '#ffe600',
@@ -54,9 +18,8 @@
     maxRadius: 6,
     minRadius: 1.6,
     speedFactor: 0.25,
-    // --- tambahan untuk memastikan gerak terus ---
-    jitterStrength: 0.03,  // kekuatan getaran acak tiap frame
-    minSpeed: 0.18,        // minimal kecepatan total (px/frame)
+    jitterStrength: 0.03,
+    minSpeed: 0.18,
   };
 
   function resize(){
@@ -90,7 +53,6 @@
         hue: Math.random(),
         alpha: rand(0.35, 0.95)
       };
-      // beri sedikit kecepatan awal jika terlalu kecil
       ensureMinSpeed(p);
       particles.push(p);
     }
@@ -146,22 +108,18 @@
   }
 
   function step(){
-    // update physics
     for(const p of particles){
-      // small random jitter so they never fully stop
       p.vx += rand(-CONFIG.jitterStrength, CONFIG.jitterStrength);
       p.vy += rand(-CONFIG.jitterStrength, CONFIG.jitterStrength);
 
       p.x += p.vx;
       p.y += p.vy;
 
-      // bounce on edges
       if(p.x < p.r){ p.x = p.r; p.vx = Math.abs(p.vx); }
       if(p.x > w - p.r){ p.x = w - p.r; p.vx = -Math.abs(p.vx); }
       if(p.y < p.r){ p.y = p.r; p.vy = Math.abs(p.vy); }
       if(p.y > h - p.r){ p.y = h - p.r; p.vy = -Math.abs(p.vy); }
 
-      // gentle repel from mouse
       if(mouse.active){
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
@@ -175,21 +133,17 @@
         }
       }
 
-      // damping but very slight (prevents runaway while still allowing continuous motion)
       p.vx *= 0.997;
       p.vy *= 0.997;
 
-      // clamp and ensure minimum speed
       const maxV = 2.4;
       if(p.vx > maxV) p.vx = maxV;
       if(p.vx < -maxV) p.vx = -maxV;
       if(p.vy > maxV) p.vy = maxV;
       if(p.vy < -maxV) p.vy = -maxV;
 
-      // ensure minimum movement so they don't stall
       const sp = Math.sqrt(p.vx*p.vx + p.vy*p.vy);
       if(sp < CONFIG.minSpeed){
-        // give small random push to restore movement
         const ang = Math.random() * Math.PI * 2;
         p.vx += Math.cos(ang) * (CONFIG.minSpeed * 0.6);
         p.vy += Math.sin(ang) * (CONFIG.minSpeed * 0.6);
@@ -200,7 +154,6 @@
     animationId = window.requestAnimationFrame(step);
   }
 
-  // helpers
   function hexWithAlpha(hex, alpha){
     const h = hex.replace('#','').trim();
     if(h.length === 3){
@@ -242,7 +195,6 @@
   }
   function toHex(n){ return ('0' + n.toString(16)).slice(-2); }
 
-  // events
   function onMouseMove(e){
     const rect = canvas.getBoundingClientRect();
     mouse.x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
@@ -281,12 +233,62 @@
   window.__homeBg = { start, stop: () => { if(animationId) cancelAnimationFrame(animationId); animationId=null; } };
 })();
 
-
-const nomer = '6285773153585';
-  document.getElementById('contact').addEventListener('click', function (e) {
-    if (e) e.preventDefault();
-
-    const linkWa = `https://wa.me/${nomer}`;
-
-    window.open(linkWa, '_blank', 'noopener,noreferrer');
+// button download cv
+document.getElementById("cv-download").addEventListener("click", function () {
+    const link = document.createElement('a');
+    link.href = "/files/CV-JUNNN.pdf";
+    link.download = "CV-JUNNN.pdf";
+    link.click();
   });
+
+  // portfolio data
+  const popup = document.querySelector(".portfolio-popup");
+  const popupImg = document.querySelector(".popup-img");
+const popupTitle = document.querySelector(".popup-title");
+const popupDesc = document.querySelector(".popup-desc");
+const popupClose = document.querySelector(".popup-close");
+
+const portfolioData = [
+    {
+        img: "img/portfolio/turbolance.webp",
+        title: "Turbolance",
+        desc: "Platform freelance modern dengan sistem project, auth, dashboard, dan UI premium.",
+    },
+    {
+        img: "img/portfolio/fashvibe.webp",
+        title: "FashVibe Store",
+        desc: "E-commerce fashion dengan cart, filter, search, serta tampilan minimalis clean.",
+      }
+];
+
+// Buka Popup
+document.querySelectorAll(".portfolio-card button").forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+
+        popupImg.src = portfolioData[index].img;
+        popupTitle.textContent = portfolioData[index].title;
+        popupDesc.textContent = portfolioData[index].desc;
+
+        popup.classList.remove("hidden");
+        popup.classList.add("active");
+    });
+});
+
+// Tutup popup
+popupClose.addEventListener("click", () => {
+    popup.classList.remove("active");
+
+    // delay sedikit agar animasi close selesai
+    setTimeout(() => {
+        popup.classList.add("hidden");
+    }, 200);
+});
+
+// const nomer = '6285773153585';
+//   document.getElementById('contact').addEventListener('click', function (e) {
+//     if (e) e.preventDefault();
+
+//     const linkWa = `https://wa.me/${nomer}`;
+
+//     window.open(linkWa, '_blank', 'noopener,noreferrer');
+//   });
