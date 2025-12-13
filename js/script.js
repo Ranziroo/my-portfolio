@@ -246,6 +246,8 @@ document.getElementById("cv-download").addEventListener("click", function () {
   const popupImg = document.querySelector(".popup-img");
 const popupTitle = document.querySelector(".popup-title");
 const popupDesc = document.querySelector(".popup-desc");
+const popupTech = document.querySelectorAll(".popup-tech");
+const popupLinks = document.querySelector(".popup-links");
 const popupClose = document.querySelector(".popup-close");
 
 const portfolioData = [
@@ -253,11 +255,15 @@ const portfolioData = [
         img: "img/portfolio/turbolance.webp",
         title: "Turbolance",
         desc: "Platform freelance modern dengan sistem project, auth, dashboard, dan UI premium.",
-    },
+        tech: "HTML, CSS, JavaScript, Payment Gateway",
+        links: "https://turbolance.vercel.app/"
+      },
     {
         img: "img/portfolio/fashvibe.webp",
         title: "FashVibe Store",
         desc: "E-commerce fashion dengan cart, filter, search, serta tampilan minimalis clean.",
+        tech: "HTML, CSS, JavaScript",
+        links: "https://fashvibestore.netlify.app/"
       }
 ];
 
@@ -268,6 +274,11 @@ document.querySelectorAll(".portfolio-card button").forEach((btn, index) => {
         popupImg.src = portfolioData[index].img;
         popupTitle.textContent = portfolioData[index].title;
         popupDesc.textContent = portfolioData[index].desc;
+        popupTech.forEach((tech, index) => {
+            tech.textContent = portfolioData[index].tech;
+        });
+
+        popupLinks.href = portfolioData[index].links;
 
         popup.classList.remove("hidden");
         popup.classList.add("active");
@@ -284,6 +295,29 @@ popupClose.addEventListener("click", () => {
     }, 200);
 });
 
+// button github
+document.querySelector(".home-btn").addEventListener("click", () => {
+    window.open("https://github.com/Ranziroo", "_blank");
+});
+
+// btn menu 
+const btnMenu = document.querySelector(".menu-btn");
+const menuCont = document.querySelector(".menu-cont");
+let open = true;
+
+btnMenu.addEventListener("click", () => {
+    if(!open) {
+        menuCont.style.visibility = "hidden";
+        menuCont.style.opacity = "0";
+        menuCont.style.transform = "scale(0.9 )";
+        open = true;
+    } else {
+        menuCont.style.visibility = "visible";
+        menuCont.style.opacity = "1";
+        menuCont.style.transform = "scale(1)";
+        open = false;
+    }
+})
 // const nomer = '6285773153585';
 //   document.getElementById('contact').addEventListener('click', function (e) {
 //     if (e) e.preventDefault();

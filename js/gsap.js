@@ -204,3 +204,119 @@ document.querySelectorAll(".zigzag-item.right").forEach(item => {
     });
 
 });
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* ===========================================================
+   PORTFOLIO CARD — fade up per card (stagger)
+=========================================================== */
+
+document.querySelectorAll(".portfolio-cont").forEach(container => {
+
+    const cards = container.querySelectorAll(".portfolio-card");
+
+    const anim = gsap.fromTo(cards,
+        {
+            opacity: 0,
+            y: 100
+        },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power1.out",
+            stagger: 0.3,      // muncul satu per satu
+            paused: true
+        }
+    );
+
+    ScrollTrigger.create({
+        trigger: container,
+        start: "top 85%",
+        end: "top -20%",
+        anticipatePin: 1,
+        onEnter: () => anim.play(),
+        onLeaveBack: () => anim.reverse()
+    });
+
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* ===========================================================
+   CONTACT SECTION — cinematic + stagger form
+=========================================================== */
+
+const contactSection = document.querySelector(".contact-cont");
+const contactImg = document.querySelector(".contact-img");
+const contactForm = document.querySelector(".contact-cont form");
+const formItems = contactForm.querySelectorAll(
+    "h2, p, label, input, textarea, button"
+);
+
+/* IMAGE EFFECT */
+const imgAnim = gsap.fromTo(contactImg,
+    {
+        opacity: 0,
+        scale: 1.1,
+        y: 60
+    },
+    {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power2.out",
+        paused: true
+    }
+);
+
+/* FORM CONTAINER */
+const formAnim = gsap.fromTo(contactForm,
+    {
+        opacity: 0,
+        y: 80
+    },
+    {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power1.out",
+        paused: true
+    }
+);
+
+/* FORM ITEMS — STAGGER */
+const itemsAnim = gsap.fromTo(formItems,
+    {
+        opacity: 0,
+        y: 40
+    },
+    {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power1.out",
+        stagger: 0.08,
+        paused: true
+    }
+);
+
+/* SCROLLTRIGGER */
+ScrollTrigger.create({
+    trigger: contactSection,
+    start: "top 85%",
+    end: "top -10%",
+    anticipatePin: 1,
+    onEnter: () => {
+        imgAnim.play();
+        formAnim.play();
+        itemsAnim.play();
+    },
+    onLeaveBack: () => {
+        itemsAnim.reverse();
+        formAnim.reverse();
+        imgAnim.reverse();
+    }
+});
