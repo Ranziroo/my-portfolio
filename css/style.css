@@ -598,7 +598,7 @@ nav ul li a:hover {
     opacity: 0;
     visibility: hidden;
     transition: 0.3s ease;
-    z-index: 200;
+    z-index: 9999;
 }
 
 /* Saat aktif */
@@ -946,6 +946,10 @@ footer {
     .portfolio-card button {
         font-size: 0.8rem;
         padding: 0.2rem 0.5rem;
+    }
+
+    .portfolio-popup {
+        width: 95%;
     }
 
     .contact {
