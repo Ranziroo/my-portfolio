@@ -639,7 +639,6 @@ nav ul li a:hover {
 
 .popup-img {
     position: relative;
-    margin-top: 1rem;
     width: 100%;
     height: 200px;
 }
@@ -948,8 +947,33 @@ footer {
         padding: 0.2rem 0.5rem;
     }
 
-    .portfolio-popup {
-        width: 95%;
+        .portfolio-popup {
+        width: 400px;
+        padding: 1.5rem;
+    }
+
+    .popup-title {
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+    }
+
+    .popup-desc {
+        margin-top: -0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .popup-img {
+        height: 120px;
+    }
+
+    .popup-links {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .popup-tech {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
     }
 
     .contact {
@@ -1093,6 +1117,35 @@ footer {
     .portfolio-card button {
         font-size: 0.8rem;
         padding: 0.2rem 0.5rem;
+    }
+
+    .portfolio-popup {
+        width: 400px;
+        padding: 1.5rem;
+    }
+
+    .popup-title {
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+    }
+
+    .popup-desc {
+        margin-top: -0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .popup-img {
+        height: 120px;
+    }
+
+    .popup-links {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .popup-tech {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.5rem;
     }
 
     .contact {
