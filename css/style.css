@@ -910,6 +910,7 @@ footer {
     .experiences {
         width: 100%;
         padding: 2.5rem 2.5%;
+        overflow: hidden;
     }
 
     .timeline-icon {
@@ -936,6 +937,7 @@ footer {
 
     .portfolio {
         padding: 2.5rem 2.5%;
+        overflow: hidden;
     }
 
     .portfolio-cont {
