@@ -246,7 +246,7 @@ document.getElementById("cv-download").addEventListener("click", function () {
   const popupImg = document.querySelector(".popup-img");
 const popupTitle = document.querySelector(".popup-title");
 const popupDesc = document.querySelector(".popup-desc");
-const popupTech = document.querySelectorAll(".popup-tech");
+const popupTech = document.querySelector  (".popup-tech");
 const popupLinks = document.querySelector(".popup-links");
 const popupClose = document.querySelector(".popup-close");
 
@@ -264,7 +264,15 @@ const portfolioData = [
         desc: "E-commerce fashion dengan cart, filter, search, serta tampilan minimalis clean.",
         tech: "HTML, CSS, JavaScript",
         links: "https://fashvibestore.netlify.app/"
-      }
+      },
+
+      {
+        img: "img/portfolio/luxoria.webp",
+        title: "Luxoria | Landing Page",
+        desc: "Luxury website landing page modern, clean, dan, responsive.",
+        tech: "NextJS, TailwindCSS, TypeScript",
+        links: "https://luxoria-landingpage.vercel.app/"
+      },
 ];
 
 // Buka Popup
@@ -274,10 +282,7 @@ document.querySelectorAll(".portfolio-card button").forEach((btn, index) => {
         popupImg.src = portfolioData[index].img;
         popupTitle.textContent = portfolioData[index].title;
         popupDesc.textContent = portfolioData[index].desc;
-        popupTech.forEach((tech, index) => {
-            tech.textContent = portfolioData[index].tech;
-        });
-
+        popupTech.textContent = portfolioData[index].tech;
         popupLinks.href = portfolioData[index].links;
 
         popup.classList.remove("hidden");

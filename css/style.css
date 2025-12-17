@@ -888,6 +888,7 @@ footer {
         padding: 2.5rem 0;
         flex-wrap: wrap;
         justify-content: center;
+        overflow: hidden;
     }
 
     .about-cont:nth-child(1) {
@@ -965,7 +966,7 @@ footer {
     }
 
     .popup-img {
-        height: 120px;
+        height: 150px;
     }
 
     .popup-links {
