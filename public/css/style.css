@@ -74,7 +74,7 @@ header::before {
     inset: 0;
     border-radius: inherit;
     background:
-        radial-gradient(circle at 30% 0%, rgba(255,214,0,0.15), transparent 55%);
+        radial-gradient(circle at 30% 0%, rgba(0, 0, 0, 0.15), transparent 55%);
     pointer-events: none;
 }
 
@@ -188,7 +188,7 @@ nav ul li a:hover::after {
         rgba(0,0,0,0.88)
     );
     backdrop-filter: blur(16px);
-    border-radius: 22px;
+    border-radius: 25px;
 
     box-shadow:
         0 40px 100px rgba(0,0,0,0.65),
@@ -217,16 +217,13 @@ nav ul li a:hover::after {
     width: 100%;
     display: flex;
     align-items: center;
-
     padding: 0.8rem 1rem;
     border-radius: 14px;
-
     text-decoration: none;
     font-family: var(--poppins);
     font-size: 0.95rem;
     font-weight: 500;
     color: var(--putih);
-
     transition: all 0.3s ease;
 }
 
@@ -1375,7 +1372,6 @@ footer::before {
         top: 5rem;
         background: var(--glass-header);
         padding: 0.5rem 1rem;
-        border-radius: 10px;
         z-index: 999;
         transition: 0.3s ease-in-out;
         transform: scale(0.9);
@@ -1444,6 +1440,7 @@ footer::before {
 
     .skills-cont {
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 1.5rem;
     }
 
     .skills-card img {
