@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="./admin.css" />
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --panel: #111;
+      --yellow: #f5c400;
+      --text: #f5f5f5;
+      --muted: #888;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body.auth-page {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1a1a1a, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text);
+    }
+
+    .login-card {
+      background: var(--panel);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .login-card h1 {
+      margin-bottom: 0.3rem;
+      color: var(--yellow);
+    }
+
+    .login-card p {
+      margin-bottom: 1.8rem;
+      color: var(--muted);
+    }
+
+    .login-card input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      background: #0b0b0b;
+      border: 1px solid #222;
+      color: var(--text);
+      border-radius: 8px;
+    }
+
+    .login-card input:focus {
+      outline: none;
+      border-color: var(--yellow);
+    }
+
+    .login-card button {
+      width: 100%;
+      padding: 0.75rem;
+      background: var(--yellow);
+      color: #000;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .login-card button:hover {
+      filter: brightness(1.1);
+    }
+
+    #errorMsg {
+      display: block;
+      margin-top: 1rem;
+      color: #ff4d4d;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body class="auth-page">
+
+  <div class="login-card">
+    <h1>Admin Login</h1>
+    <p>Authorized access only</p>
+
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email admin" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+
+    <span id="errorMsg"></span>
+  </div>
+
+  <script type="module" src="./supabase.js"></script>
+  <script type="module" src="./admin.js"></script>
+</body>
+
+</html>

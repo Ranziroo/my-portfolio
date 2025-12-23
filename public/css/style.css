@@ -52,17 +52,15 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.08),
-        rgba(0,0,0,0.65)
-    );
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(0, 0, 0, 0.65));
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.45),
-        inset 0 0 0 1px rgba(255,255,255,0.12);
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 
     transition: all 0.35s ease;
 }
@@ -130,12 +128,10 @@ nav ul li a::after {
     bottom: -6px;
     width: 0%;
     height: 2px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        var(--accent),
-        transparent
-    );
+    background: linear-gradient(to right,
+            transparent,
+            var(--accent),
+            transparent);
     transform: translateX(-50%);
     transition: width 0.3s ease;
 }
@@ -161,8 +157,8 @@ nav ul li a:hover::after {
     font-size: 1.3rem;
     place-items: center;
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.4),
-        inset 0 0 0 1px rgba(255,255,255,0.1);
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -182,17 +178,15 @@ nav ul li a:hover::after {
     width: 100%;
     padding: 0.8rem;
 
-    background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.10),
-        rgba(0,0,0,0.88)
-    );
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.10),
+            rgba(0, 0, 0, 0.88));
     backdrop-filter: blur(16px);
     border-radius: 25px;
 
     box-shadow:
-        0 40px 100px rgba(0,0,0,0.65),
-        inset 0 0 0 1px rgba(255,255,255,0.12);
+        0 40px 100px rgba(0, 0, 0, 0.65),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 
     display: none;
     overflow: hidden;
@@ -229,11 +223,9 @@ nav ul li a:hover::after {
 
 /* hover background + slide */
 .menu-cont ul li a:hover {
-    background: linear-gradient(
-        135deg,
-        rgba(255,214,0,0.15),
-        rgba(255,214,0,0.05)
-    );
+    background: linear-gradient(135deg,
+            rgba(255, 214, 0, 0.15),
+            rgba(255, 214, 0, 0.05));
     color: var(--accent);
     transform: translateX(6px);
 }
@@ -262,7 +254,8 @@ nav ul li a:hover::after {
 ================================ */
 
 .menu-cont {
-    max-height: calc(100vh - 120px); /* aman dari header & notch */
+    max-height: calc(100vh - 120px);
+    /* aman dari header & notch */
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
@@ -278,7 +271,7 @@ nav ul li a:hover::after {
 }
 
 .menu-cont::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
 
@@ -315,14 +308,14 @@ nav ul li a:hover::after {
     }
 }
 
-        .home-cont {
-            position: relative;
-            width: 75%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+.home-cont {
+    position: relative;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
 .home-cont-child {
     position: relative;
@@ -436,11 +429,11 @@ nav ul li a:hover::after {
     padding: 2.2rem 2.4rem;
     border-radius: 30px;
 
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,0.12);
+        0 15px 40px rgba(0, 0, 0, 0.12);
 
     color: var(--hitam);
     font-size: 1rem;
@@ -453,7 +446,7 @@ nav ul li a:hover::after {
 .about-lead:hover {
     transform: translateY(-6px);
     box-shadow:
-        0 25px 60px rgba(0,0,0,0.2);
+        0 25px 60px rgba(0, 0, 0, 0.2);
 }
 
 .about-lead b {
@@ -469,14 +462,12 @@ nav ul li a:hover::after {
     padding: 6px;
     border-radius: 50%;
 
-    background: linear-gradient(
-        135deg,
-        var(--accent),
-        transparent
-    );
+    background: linear-gradient(135deg,
+            var(--accent),
+            transparent);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.25);
+        0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 /* Glow ring */
@@ -485,11 +476,9 @@ nav ul li a:hover::after {
     position: absolute;
     inset: -12px;
     border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(255,214,0,0.25),
-        transparent 70%
-    );
+    background: radial-gradient(circle,
+            rgba(255, 214, 0, 0.25),
+            transparent 70%);
     z-index: -1;
 }
 
@@ -504,11 +493,9 @@ nav ul li a:hover::after {
 /* ===================== BUTTON ===================== */
 .cv-download {
     margin-top: 1.5rem;
-    background: linear-gradient(
-        135deg,
-        var(--hitam),
-        #000
-    );
+    background: linear-gradient(135deg,
+            var(--hitam),
+            #000);
     border: none;
     outline: none;
     color: var(--putih);
@@ -519,18 +506,16 @@ nav ul li a:hover::after {
     cursor: pointer;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.3);
+        0 10px 30px rgba(0, 0, 0, 0.3);
 
     transition: all 0.3s ease;
 }
 
 .cv-download:hover {
     transform: translateY(-3px);
-    background: linear-gradient(
-        135deg,
-        var(--abu),
-        #111
-    );
+    background: linear-gradient(135deg,
+            var(--abu),
+            #111);
 }
 
 .cv-download:active {
@@ -589,11 +574,9 @@ nav ul li a:hover::after {
     width: 100%;
     height: 3px;
     border: none;
-    background: linear-gradient(
-        to right,
-        var(--accent),
-        transparent
-    );
+    background: linear-gradient(to right,
+            var(--accent),
+            transparent);
     border-radius: 5px;
     margin-bottom: 1.5rem;
 }
@@ -617,11 +600,11 @@ nav ul li a:hover::after {
     padding: 1.8rem 1rem;
     border-radius: 18px;
 
-    background: rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(8px);
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.12);
+        0 10px 30px rgba(0, 0, 0, 0.12);
 
     transition: all 0.4s ease;
 }
@@ -630,7 +613,7 @@ nav ul li a:hover::after {
 .skills-card:hover {
     transform: translateY(-10px);
     box-shadow:
-        0 20px 50px rgba(0,0,0,0.25);
+        0 20px 50px rgba(0, 0, 0, 0.25);
 }
 
 /* ===================== ICON ===================== */
@@ -639,7 +622,7 @@ nav ul li a:hover::after {
     height: 70px;
     object-fit: contain;
     transition: all 0.4s ease;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
 }
 
 /* Icon Hover */
@@ -685,6 +668,26 @@ nav ul li a:hover::after {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+/* Category wrapper inside grid */
+.skills-category {
+    grid-column: 1 / -1;
+    /* full width */
+}
+
+/* Skill items grid per category */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.8rem;
+}
+
+@media screen and (max-width: 480px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
 }
 
 /* ===================== RESPONSIVE ===================== */
@@ -733,12 +736,10 @@ nav ul li a:hover::after {
     transform: translateX(-50%);
     width: 4px;
     height: 100%;
-    background: linear-gradient(
-        to bottom,
-        transparent,
-        var(--accent),
-        transparent
-    );
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--accent),
+            transparent);
     opacity: 0.9;
     border-radius: 10px;
 }
@@ -764,8 +765,8 @@ nav ul li a:hover::after {
     z-index: 20;
 
     box-shadow:
-        0 0 0 6px rgba(99,102,241,0.15),
-        0 0 25px rgba(99,102,241,0.6);
+        0 0 0 6px rgba(99, 102, 241, 0.15),
+        0 0 25px rgba(99, 102, 241, 0.6);
 }
 
 /* ===================== CONTENT BOX ===================== */
@@ -775,11 +776,11 @@ nav ul li a:hover::after {
     padding: 1.8rem 2rem;
     border-radius: 18px;
 
-    background: rgba(255,255,255,0.95);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
 
     box-shadow:
-        0 15px 40px rgba(0,0,0,0.25);
+        0 15px 40px rgba(0, 0, 0, 0.25);
 
     transition: all 0.4s ease;
 }
@@ -788,7 +789,7 @@ nav ul li a:hover::after {
 .zigzag-content:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow:
-        0 25px 60px rgba(0,0,0,0.35);
+        0 25px 60px rgba(0, 0, 0, 0.35);
 }
 
 /* Connector ke garis tengah */
@@ -954,11 +955,9 @@ nav ul li a:hover::after {
 .portfolio-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to top,
-        var(--dark),
-        transparent 70%
-    );
+    background: linear-gradient(to top,
+            var(--dark),
+            transparent 70%);
     opacity: 0;
     transition: 0.4s ease;
     display: flex;
@@ -1096,8 +1095,8 @@ nav ul li a:hover::after {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 20% 25%, rgba(250,204,21,0.12), transparent 45%),
-        radial-gradient(circle at 80% 70%, rgba(234,179,8,0.08), transparent 50%);
+        radial-gradient(circle at 20% 25%, rgba(250, 204, 21, 0.12), transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(234, 179, 8, 0.08), transparent 50%);
     pointer-events: none;
 }
 
@@ -1140,17 +1139,15 @@ nav ul li a:hover::after {
 
 /* FORM CARD */
 .contact-card {
-    background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.05),
-        rgba(255,255,255,0.015)
-    );
-    border: 1px solid rgba(255,255,255,0.1);
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.015));
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 22px;
     padding: 44px;
     box-shadow:
-        0 40px 100px rgba(0,0,0,0.7),
-        0 0 40px rgba(250,204,21,0.06);
+        0 40px 100px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(250, 204, 21, 0.06);
 }
 
 /* Floating inputs */
@@ -1164,7 +1161,7 @@ nav ul li a:hover::after {
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding: 12px 0;
     color: #fff;
     font-size: 1rem;
@@ -1180,17 +1177,17 @@ nav ul li a:hover::after {
     position: absolute;
     left: 0;
     top: 14px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 0.85rem;
     font-family: var(--poppins);
     transition: 0.3s ease;
     pointer-events: none;
 }
 
-.input-wrap input:focus + label,
-.input-wrap input:valid + label,
-.input-wrap textarea:focus + label,
-.input-wrap textarea:valid + label {
+.input-wrap input:focus+label,
+.input-wrap input:valid+label,
+.input-wrap textarea:focus+label,
+.input-wrap textarea:valid+label {
     top: -12px;
     font-size: 0.7rem;
     font-family: var(--poppins);
@@ -1223,7 +1220,7 @@ nav ul li a:hover::after {
 
 .send-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(250,204,21,0.35);
+    box-shadow: 0 12px 40px rgba(250, 204, 21, 0.35);
 }
 
 /* RESPONSIVE */
@@ -1246,11 +1243,9 @@ footer {
     position: relative;
     width: 100%;
     background:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,0.03),
-            rgba(0,0,0,0.4)
-        ),
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.03),
+            rgba(0, 0, 0, 0.4)),
         var(--header);
     display: flex;
     align-items: center;
@@ -1265,7 +1260,7 @@ footer::before {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 50% 0%, rgba(255,214,0,0.12), transparent 55%);
+        radial-gradient(circle at 50% 0%, rgba(255, 214, 0, 0.12), transparent 55%);
     pointer-events: none;
 }
 
@@ -1285,19 +1280,17 @@ footer::before {
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.08),
-        rgba(0,0,0,0.6)
-    );
+    background: linear-gradient(145deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(0, 0, 0, 0.6));
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     display: grid;
     place-items: center;
     text-decoration: none;
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.4),
-        inset 0 0 0 1px rgba(255,255,255,0.08);
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     transition: all 0.35s ease;
 }
 
@@ -1311,8 +1304,8 @@ footer::before {
 .footer-cont a:hover {
     transform: translateY(-6px) scale(1.05);
     box-shadow:
-        0 15px 45px rgba(255,214,0,0.35),
-        inset 0 0 0 1px rgba(255,214,0,0.5);
+        0 15px 45px rgba(255, 214, 0, 0.35),
+        inset 0 0 0 1px rgba(255, 214, 0, 0.5);
 }
 
 .footer-cont a:hover i {
@@ -1341,12 +1334,10 @@ footer::before {
     display: block;
     width: 140px;
     height: 1px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(255,214,0,0.6),
-        transparent
-    );
+    background: linear-gradient(to right,
+            transparent,
+            rgba(255, 214, 0, 0.6),
+            transparent);
     margin: 0 auto 1rem;
 }
 
@@ -1492,7 +1483,7 @@ footer::before {
         padding: 0.2rem 0.5rem;
     }
 
-        .portfolio-popup {
+    .portfolio-popup {
         width: 95%;
         padding: 1rem;
     }
@@ -1594,8 +1585,8 @@ footer::before {
         border-radius: 26px;
 
         box-shadow:
-            0 50px 120px rgba(0,0,0,0.6),
-            inset 0 0 0 1px rgba(255,255,255,0.14);
+            0 50px 120px rgba(0, 0, 0, 0.6),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.14);
     }
 
     .menu-cont ul {
@@ -1615,10 +1606,11 @@ footer::before {
     .menu-cont ul li a::before {
         height: 70%;
     }
-        
+
     .home {
         padding: 2.5rem 0;
     }
+
     .home-cont {
         width: 95%;
     }

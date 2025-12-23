@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="admin-wrapper">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h2 class="logo">ADMIN</h2>
+            <ul>
+                <li data-tab="skills"><i class="fa fa-code"></i> Skills</li>
+                <li data-tab="experiences"><i class="fa fa-briefcase"></i> Experiences</li>
+                <li data-tab="portfolio"><i class="fa fa-image"></i> Portfolio</li>
+                <button id="logoutBtn">Logout</button>
+            </ul>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="content">
+
+            <!-- SKILLS -->
+            <section class="tab" id="skills">
+                <h1>Skills</h1>
+
+                <div id="skillsContainer"></div>
+
+                <button id="addSkill" class="add">+ Add Skill</button>
+                <button id="saveSkills">Save All</button>
+            </section>
+
+            <!-- EXPERIENCES -->
+            <section class="tab" id="experiences">
+                <h1>Experiences</h1>
+
+                <div id="expContainer"></div>
+
+                <button id="addExp" class="add">+ Add Experience</button>
+                <button id="saveExp">Save All</button>
+            </section>
+
+            <!-- PORTFOLIO -->
+            <section class="tab" id="portfolio">
+                <h1>Portfolio</h1>
+
+                <div id="portfolioContainer"></div>
+
+                <button id="addProject" class="add">+ Add Project</button>
+                <button id="saveProjects">Save All</button>
+            </section>
+
+        </main>
+    </div>
+
+    <script type="module" src="./supabase.js"></script>
+    <script type="module" src="./admin.js"></script>
+
+    <script>
+        const tabs = document.querySelectorAll(".sidebar li[data-tab]");
+        const sections = document.querySelectorAll(".tab");
+
+        tabs.forEach(tab => {
+            tab.onclick = () => {
+                tabs.forEach(t => t.classList.remove("active"));
+                sections.forEach(s => s.classList.remove("active"));
+
+                tab.classList.add("active");
+                document.getElementById(tab.dataset.tab).classList.add("active");
+            };
+        });
+    </script>
+
+</body>
+
+</html>

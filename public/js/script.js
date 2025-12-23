@@ -1,3 +1,225 @@
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabase = createClient(
+  "https://vakzffcyezcjfbvakfup.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZha3pmZmN5ZXpjamZidmFrZnVwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYwNjQ2ODcsImV4cCI6MjA4MTY0MDY4N30.5y83PUz8SOszHd7knW0RIwiUT1KOT_PJ7Ik8rN0b4pQ"
+);
+
+/* ===========================================================
+   SKILLS
+=========================================================== */
+async function loadSkills() {
+  const { data, error } = await supabase
+    .from("skills")
+    .select("*")
+    .order("category")
+    .order("position");
+
+  if (error) {
+    console.error("Skills error:", error);
+    return false;
+  }
+
+  const cont = document.getElementById("skillsCont");
+  cont.innerHTML = "";
+
+  const grouped = {};
+  data.forEach(skill => {
+    if (!grouped[skill.category]) grouped[skill.category] = [];
+    grouped[skill.category].push(skill);
+  });
+
+  Object.entries(grouped).forEach(([category, skills]) => {
+    cont.insertAdjacentHTML("beforeend", `
+      <div class="skills-category">
+        <h4>${category}</h4>
+        <hr>
+        <div class="skills-grid">
+          ${skills.map(skill => `
+            <div class="skills-card">
+              <img src="${skill.icon_url}" alt="${skill.name}">
+              <p>${skill.name}</p>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `);
+  });
+
+  return true;
+}
+
+loadSkills();
+
+/* ===========================================================
+   EXPERIENCES
+=========================================================== */
+async function loadExperiences() {
+  const { data, error } = await supabase
+    .from("experiences")
+    .select("*")
+    .order("position");
+
+  if (error) {
+    console.error("Experiences error:", error);
+    return false;
+  }
+
+  const timeline = document.querySelector(".zigzag-timeline");
+  timeline.innerHTML = "";
+
+  data.forEach((exp, i) => {
+    const side = i % 2 === 0 ? "left" : "right";
+
+    timeline.insertAdjacentHTML("beforeend", `
+      <div class="zigzag-item ${side}">
+        <i class="fa-solid fa-graduation-cap timeline-icon"></i>
+        <div class="zigzag-content">
+          <h3>${exp.title}</h3>
+          <span class="year">${exp.year}</span>
+          <p>${exp.description}</p>
+        </div>
+      </div>
+    `);
+  });
+
+  return true;
+}
+
+loadExperiences();
+
+/* ===========================================================
+   PORTFOLIO
+=========================================================== */
+async function loadPortfolio() {
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .order("created_at");
+
+  if (error) {
+    console.error("Portfolio error:", error);
+    return false;
+  }
+
+  const container = document.querySelector(".portfolio-cont");
+  container.innerHTML = "";
+
+  data.forEach(project => {
+    container.insertAdjacentHTML("beforeend", `
+      <div class="portfolio-card">
+        <img src="${project.cover_image}" alt="${project.title}">
+        <div class="portfolio-overlay">
+          <div class="portfolio-info">
+            <h3>${project.title}</h3>
+            <span>${project.category}</span>
+            <button data-id="${project.id}">See More</button>
+          </div>
+        </div>
+      </div>
+    `);
+  });
+  bindPortfolioPopup(data);
+  return true;
+}
+loadPortfolio();
+
+// global state untuk menu & popup
+let isMenuOpen = false;
+let isPopupOpen = false;
+
+// popup
+const popup = document.querySelector(".portfolio-popup");
+const popupImg = popup.querySelector(".popup-img");
+const popupTitle = popup.querySelector(".popup-title");
+const popupDesc = popup.querySelector(".popup-desc");
+const popupTech = popup.querySelector(".popup-tech");
+const popupLinks = popup.querySelector(".popup-links");
+const popupClose = popup.querySelector(".popup-close");
+
+// menu
+const btnMenu = document.querySelector(".menu-btn");
+const menuCont = document.querySelector(".menu-cont");
+
+// menu control
+function openMenu() {
+  if (isPopupOpen) closePopup();
+
+  menuCont.style.visibility = "visible";
+  menuCont.style.opacity = "1";
+  menuCont.style.transform = "scale(1)";
+  isMenuOpen = true;
+}
+
+function closeMenu() {
+  menuCont.style.visibility = "hidden";
+  menuCont.style.opacity = "0";
+  menuCont.style.transform = "scale(0.9)";
+  isMenuOpen = false;
+}
+
+btnMenu.addEventListener("click", (e) => {
+  e.stopPropagation();
+  isMenuOpen ? closeMenu() : openMenu();
+});
+
+// popup control
+function openPopup(project) {
+  if (isMenuOpen) closeMenu();
+
+  popupImg.src = project.cover_image;
+  popupTitle.textContent = project.title;
+  popupDesc.textContent = project.description;
+  popupTech.textContent = project.category;
+  popupLinks.href = project.link;
+
+  popup.classList.remove("hidden");
+  popup.classList.add("active");
+  isPopupOpen = true;
+}
+
+function closePopup() {
+  popup.classList.remove("active");
+  isPopupOpen = false;
+
+  setTimeout(() => {
+    popup.classList.add("hidden");
+  }, 200);
+}
+
+popupClose.addEventListener("click", (e) => {
+  e.stopPropagation();
+  closePopup();
+});
+
+// bind popup
+function bindPortfolioPopup(projects) {
+  document.querySelectorAll(".portfolio-info button").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      const project = projects.find(p => String(p.id) === btn.dataset.id);
+      if (!project) return;
+
+      openPopup(project);
+    });
+  });
+}
+
+// close menu & popup
+document.addEventListener("click", (e) => {
+  const insideMenu = menuCont.contains(e.target) || btnMenu.contains(e.target);
+  const insidePopup = popup.contains(e.target);
+
+  if (!insideMenu && isMenuOpen) closeMenu();
+  if (!insidePopup && isPopupOpen) closePopup();
+});
+
+// stop propagation
+menuCont.addEventListener("click", e => e.stopPropagation());
+popup.addEventListener("click", e => e.stopPropagation());
+
+// canvas home
 (function () {
   const canvas = document.querySelector('.home-bg');
   if (!canvas) return;
@@ -233,139 +455,134 @@
   window.__homeBg = { start, stop: () => { if (animationId) cancelAnimationFrame(animationId); animationId = null; } };
 })();
 
-// global state
-let isMenuOpen = false;
-let isPopupOpen = false;
-
-
 // portfolio
-const popup = document.querySelector(".portfolio-popup");
-const popupImg = document.querySelector(".popup-img");
-const popupTitle = document.querySelector(".popup-title");
-const popupDesc = document.querySelector(".popup-desc");
-const popupTech = document.querySelector(".popup-tech");
-const popupLinks = document.querySelector(".popup-links");
-const popupClose = document.querySelector(".popup-close");
-// menu
-const btnMenu = document.querySelector(".menu-btn");
-const menuCont = document.querySelector(".menu-cont");
-// data
-const portfolioData = [
-  {
-    img: "img/portfolio/turbolance.webp",
-    title: "Turbolance",
-    desc: "Platform freelance modern dengan sistem project, auth, dashboard, dan UI premium.",
-    tech: "HTML, CSS, JavaScript, Payment Gateway",
-    links: "https://turbolance.vercel.app/"
-  },
-  {
-    img: "img/portfolio/fashvibe.webp",
-    title: "FashVibe Store",
-    desc: "E-commerce fashion dengan cart, filter, search, serta tampilan minimalis clean.",
-    tech: "HTML, CSS, JavaScript",
-    links: "https://jfh11.github.io/mlweb/"
-  },
+// const popup = document.querySelector(".portfolio-popup");
+// const popupImg = document.querySelector(".popup-img");
+// const popupTitle = document.querySelector(".popup-title");
+// const popupDesc = document.querySelector(".popup-desc");
+// const popupTech = document.querySelector(".popup-tech");
+// const popupLinks = document.querySelector(".popup-links");
+// const popupClose = document.querySelector(".popup-close");
+// // menu
+// const btnMenu = document.querySelector(".menu-btn");
+// const menuCont = document.querySelector(".menu-cont");
+// // data
+// const portfolioData = [
+//   {
+//     img: "img/portfolio/turbolance.webp",
+//     title: "Turbolance",
+//     desc: "Platform freelance modern dengan sistem project, auth, dashboard, dan UI premium.",
+//     tech: "HTML, CSS, JavaScript, Payment Gateway",
+//     links: "https://turbolance.vercel.app/"
+//   },
+//   {
+//     img: "img/portfolio/fashvibe.webp",
+//     title: "FashVibe Store",
+//     desc: "E-commerce fashion dengan cart, filter, search, serta tampilan minimalis clean.",
+//     tech: "HTML, CSS, JavaScript",
+//     links: "https://jfh11.github.io/mlweb/"
+//   },
 
-  {
-    img: "img/portfolio/luxoria.webp",
-    title: "Luxoria | Landing Page",
-    desc: "Luxury website landing page. Built with the modern, clean, and structured NextJS framework.",
-    tech: "NextJS, TailwindCSS, TypeScript",
-    links: "https://luxoria-landingpage.vercel.app/"
-  },
-];
-// fungsi buka popup
-function openPopup() {
-  // jika menu terbuka → tutup
-  if (isMenuOpen) {
-    menuCont.style.visibility = "hidden";
-    menuCont.style.opacity = "0";
-    menuCont.style.transform = "scale(0.9)";
-    isMenuOpen = false;
-  }
+//   {
+//     img: "img/portfolio/luxoria.webp",
+//     title: "Luxoria | Landing Page",
+//     desc: "Luxury website landing page. Built with the modern, clean, and structured NextJS framework.",
+//     tech: "NextJS, TailwindCSS, TypeScript",
+//     links: "https://luxoria-landingpage.vercel.app/"
+//   },
+// ];
+// // fungsi buka popup
+// function openPopup() {
+//   // jika menu terbuka → tutup
+//   if (isMenuOpen) {
+//     menuCont.style.visibility = "hidden";
+//     menuCont.style.opacity = "0";
+//     menuCont.style.transform = "scale(0.9)";
+//     isMenuOpen = false;
+//   }
 
-  popup.classList.remove("hidden");
-  popup.classList.add("active");
-  isPopupOpen = true;
-}
+//   popup.classList.remove("hidden");
+//   popup.classList.add("active");
+//   isPopupOpen = true;
+// }
 
-// fungsi tutup popup
-function closePopup() {
-  popup.classList.remove("active");
-  isPopupOpen = false;
+// // fungsi tutup popup
+// function closePopup() {
+//   popup.classList.remove("active");
+//   isPopupOpen = false;
 
-  setTimeout(() => {
-    popup.classList.add("hidden");
-  }, 200);
-}
+//   setTimeout(() => {
+//     popup.classList.add("hidden");
+//   }, 200);
+// }
 
-popupClose.addEventListener("click", () => {
-  closePopup();
-});
+// popupClose.addEventListener("click", () => {
+//   closePopup();
+// });
 
-// memanggil data portfolio
-document.querySelectorAll(".portfolio-card button").forEach((btn, index) => {
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
+// // memanggil data portfolio
+// document.querySelectorAll(".portfolio-card button").forEach((btn, index) => {
+//   btn.addEventListener("click", (e) => {
+//     e.stopPropagation();
 
-    popupImg.src = portfolioData[index].img;
-    popupTitle.textContent = portfolioData[index].title;
-    popupDesc.textContent = portfolioData[index].desc;
-    popupTech.textContent = portfolioData[index].tech;
-    popupLinks.href = portfolioData[index].links;
+//     popupImg.src = portfolioData[index].img;
+//     popupTitle.textContent = portfolioData[index].title;
+//     popupDesc.textContent = portfolioData[index].desc;
+//     popupTech.textContent = portfolioData[index].tech;
+//     popupLinks.href = portfolioData[index].links;
 
-    openPopup();
-  });
-});
+//     openPopup();
+//   });
+// });
 
-// tutup popup
-popupClose.addEventListener("click", (e) => {
-  e.stopPropagation();
-  closePopup();
-});
+// // tutup popup
+// popupClose.addEventListener("click", (e) => {
+//   e.stopPropagation();
+//   closePopup();
+// });
 
-// buka menu
-btnMenu.addEventListener("click", (e) => {
-  e.stopPropagation();
+// // buka menu
+// btnMenu.addEventListener("click", (e) => {
+//   e.stopPropagation();
 
-  // jika popup terbuka → tutup dulu
-  if (isPopupOpen) closePopup();
+//   // jika popup terbuka → tutup dulu
+//   if (isPopupOpen) closePopup();
 
-  if (isMenuOpen) {
-    menuCont.style.visibility = "hidden";
-    menuCont.style.opacity = "0";
-    menuCont.style.transform = "scale(0.9)";
-    isMenuOpen = false;
-  } else {
-    menuCont.style.visibility = "visible";
-    menuCont.style.opacity = "1";
-    menuCont.style.transform = "scale(1)";
-    isMenuOpen = true;
-  }
-});
+//   if (isMenuOpen) {
+//     menuCont.style.visibility = "hidden";
+//     menuCont.style.opacity = "0";
+//     menuCont.style.transform = "scale(0.9)";
+//     isMenuOpen = false;
+//   } else {
+//     menuCont.style.visibility = "visible";
+//     menuCont.style.opacity = "1";
+//     menuCont.style.transform = "scale(1)";
+//     isMenuOpen = true;
+//   }
+// });
 
-// tutup menu
-document.addEventListener("click", (e) => {
-  const insideMenu = menuCont.contains(e.target) || btnMenu.contains(e.target);
-  const insidePopup = popup.contains(e.target);
+// // tutup menu
+// document.addEventListener("click", (e) => {
+//   const insideMenu = menuCont.contains(e.target) || btnMenu.contains(e.target);
+//   const insidePopup = popup.contains(e.target);
 
-  if (!insideMenu && !insidePopup) {
-    if (isMenuOpen) {
-      menuCont.style.visibility = "hidden";
-      menuCont.style.opacity = "0";
-      menuCont.style.transform = "scale(0.9)";
-      isMenuOpen = false;
-    }
+//   if (!insideMenu && !insidePopup) {
+//     if (isMenuOpen) {
+//       menuCont.style.visibility = "hidden";
+//       menuCont.style.opacity = "0";
+//       menuCont.style.transform = "scale(0.9)";
+//       isMenuOpen = false;
+//     }
 
-    if (isPopupOpen) {
-      closePopup();
-    }
-  }
-});
+//     if (isPopupOpen) {
+//       closePopup();
+//     }
+//   }
+// });
 
-// stop propagation
-menuCont.addEventListener("click", e => e.stopPropagation());
-popup.addEventListener("click", e => e.stopPropagation());
+// // stop propagation
+// menuCont.addEventListener("click", e => e.stopPropagation());
+// popup.addEventListener("click", e => e.stopPropagation());
 
 // button download cv
 document.getElementById("cv-download").addEventListener("click", function () {
